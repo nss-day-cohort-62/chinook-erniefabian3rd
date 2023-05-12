@@ -1,5 +1,5 @@
 SELECT
-COUNT(il.InvoiceId) AS TrackCount,
+COUNT(i.InvoiceId) AS TrackCount,
 t.Name AS TrackName
 FROM InvoiceLine il
 JOIN Track t
@@ -7,6 +7,6 @@ JOIN Track t
 JOIN Invoice i
     ON i.InvoiceId = il.InvoiceId
 WHERE i.InvoiceDate LIKE '%2013%'
-GROUP BY il.InvoiceId
+GROUP BY TrackName
+HAVING TrackCount = 2
 ORDER BY TrackCount DESC
-LIMIT 12
